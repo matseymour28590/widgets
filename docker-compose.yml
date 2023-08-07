@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+  widgets-backend:
+    hostname: widgets-backend
+    volumes:
+      - ./widgets-backend:/widgets-backend
+    build:
+      context: .
+      dockerfile: Dockerfile-widgets-backend
+    working_dir: /widgets-backend
+    command: >
+      bash -c "./manage.py makemigrations && ./manage.py migrate && ./manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+  widgets-frontend:
+    hostname: widgets-frontend
+    volumes:
+      - ./widgets-frontend/src:/widgets-frontend/src
+    build:
+      context: .
+      dockerfile: Dockerfile-widgets-frontend
+    working_dir: /widgets-frontend
+    ports:
+      - "3000:3000"
+    command: >
+      npm start
+    environment:
+      - port=3000
+      - browser=none

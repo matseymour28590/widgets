@@ -1,0 +1,141 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /api/v1/widgets:
+    get:
+      operationId: listWidgets
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Widget'
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createWidget
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Widget'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Widget'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Widget'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Widget'
+          description: ''
+      tags:
+      - api
+  /api/v1/widgets/{id}:
+    put:
+      operationId: updateWidget
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this widget.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Widget'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Widget'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Widget'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Widget'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateWidget
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this widget.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Widget'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Widget'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Widget'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Widget'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroyWidget
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this widget.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+components:
+  schemas:
+    Widget:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 15
+        manufacturer:
+          type: string
+          maxLength: 30
+        stock:
+          type: integer
+      required:
+      - name
+      - manufacturer
+      - stock

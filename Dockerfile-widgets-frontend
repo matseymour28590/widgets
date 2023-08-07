@@ -1,0 +1,9 @@
+FROM node:18
+
+RUN mkdir /widgets-frontend
+ADD widgets-frontend /widgets-frontend
+WORKDIR /widgets-frontend
+RUN npm install
+
+
+EXPOSE 3000

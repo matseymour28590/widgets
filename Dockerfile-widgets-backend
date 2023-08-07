@@ -1,0 +1,8 @@
+FROM python:3.11
+
+ENV PYTHONUNBUFFERED 1
+
+COPY widgets-backend/requirements.txt /tmp
+RUN pip install -r /tmp/requirements.txt
+
+EXPOSE 8000
